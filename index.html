@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurtleShells</title>
+    <style>
+        body {
+            background: #f9f9f9;
+            padding-top: 10px;
+        }
+
+        p {
+            color: black;
+            font-family: "Courier";
+            font-size: 30px;
+            margin: 10px 0 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100em;
+            animation: type 4s steps(60, end);
+        }
+
+        p:nth-child(2) {
+            animation: type2 6s steps(60, end);
+        }
+
+        p a {
+            color: lime;
+            text-decoration: none;
+        }
+
+        span {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes type {
+            from {
+                width: 0;
+            }
+        }
+
+        @keyframes type2 {
+            0% {
+                width: 0;
+            }
+
+            50% {
+                width: 0;
+            }
+
+            100% {
+                width: 100;
+            }
+        }
+
+        @keyframes blink {
+            to {
+                opacity: .0;
+            }
+        }
+
+        ::selection {
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Hello! This website is still under construction! I hope it will be available soon.</p>
+    <p>If you need anything, contact us at: contact@turtleshells.io<span>|</span></p>
+</body>
+
+</html>
