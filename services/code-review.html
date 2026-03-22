@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Secure Code Review by TurtleShells - Uncover hidden vulnerabilities before attackers do." />
+  <meta name="author" content="TurtleShells" />
+  <title>TurtleShells | Secure Code Review</title>
+  <link rel="icon" type="image/png" href="../assets/simbolo_png_2.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          maxWidth: { page: '1200px' },
+          boxShadow: {
+            'hard-sm': '4px 4px 0px #000000',
+            'hard-md': '6px 6px 0px #000000',
+            'hard-lg': '8px 8px 0px #000000'
+          },
+          fontFamily: {
+            sans: ['Figtree', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['Syne', 'Figtree', 'ui-sans-serif', 'sans-serif']
+          },
+          transitionDuration: { 250: '250ms', 350: '350ms' }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --color-green: #ccff00;
+      --color-black: #000000;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Figtree', sans-serif;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --duration: 0.35s;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; overflow-x: hidden; }
+    body { font-family: var(--font-body); position: relative; overflow-x: hidden; }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    h1, h2, h3, h4, .font-display { font-family: var(--font-display); }
+    .logo-nav { position: relative; display: inline-block; height: 2.25rem; }
+    .logo-nav img { height: 2.25rem; width: auto; display: block; }
+    @media (min-width: 768px) {
+      .logo-nav { height: 3.25rem; }
+      .logo-nav img { height: 3.25rem; }
+    }
+    .logo-nav .logo-default { transition: opacity var(--duration) var(--ease-out); }
+    .logo-nav .logo-hover { position: absolute; left: 0; top: 0; opacity: 0; transition: opacity var(--duration) var(--ease-out); }
+    .logo-nav:hover .logo-default { opacity: 0; }
+    .logo-nav:hover .logo-hover { opacity: 1; }
+    * { -webkit-tap-highlight-color: transparent; }
+    a, button { touch-action: manipulation; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--color-green); outline-offset: 2px; }
+    #mobile-menu:not(.hidden) { animation: menuSlideDown 0.25s var(--ease-out) forwards; }
+    @keyframes menuSlideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-reveal > * { opacity: 0; animation: heroReveal var(--duration) var(--ease-out) forwards; }
+    .hero-reveal > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero-reveal > *:nth-child(2) { animation-delay: 0.12s; }
+    .hero-reveal > *:nth-child(3) { animation-delay: 0.2s; }
+    .hero-reveal > *:nth-child(4) { animation-delay: 0.28s; }
+    .hero-reveal-image > * { opacity: 0; animation: heroRevealOpacity var(--duration) var(--ease-out) forwards; animation-delay: 0.4s; }
+    @keyframes heroRevealOpacity { to { opacity: 1; } }
+    @keyframes heroReveal { to { opacity: 1; transform: translateY(0); } }
+    .hero-reveal > * { transform: translateY(12px); }
+    .hero-highlight { transform: rotate(-1deg); }
+    .nav-link-desktop { position: relative; }
+    .nav-link-desktop::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--color-green); transition: width var(--duration) var(--ease-out); }
+    .nav-link-desktop:hover::after { width: 100%; }
+    .nav-header {
+      box-shadow: 0 0 0 transparent;
+      border-bottom: 1px solid transparent;
+      transition: box-shadow var(--duration) var(--ease-out), border-color var(--duration) var(--ease-out);
+    }
+    .nav-header.nav-scrolled {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      border-bottom-color: rgba(204, 255, 0, 0.25);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-reveal > * { animation: none; opacity: 1; transform: none; }
+      .hero-reveal-image > * { animation: none; opacity: 1; }
+      .nav-header { transition: none; }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+    @media (max-width: 639px) {
+      .pt-accordion-trigger { min-height: 3.75rem; }
+    }
+    .pt-accordion-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s var(--ease-out);
+    }
+    .pt-accordion-content.is-open {
+      grid-template-rows: 1fr;
+    }
+    .pt-accordion-content > .pt-accordion-inner {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white font-sans text-black antialiased">
+
+<!-- Navbar -->
+<nav id="navbar" class="nav-header fixed top-0 left-0 right-0 z-50 transition-all duration-200 text-[#f1f0ed]" style="background-color: var(--color-black);">
+  <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
+    <div class="flex items-center justify-between h-16 md:h-20 lg:grid lg:grid-cols-3">
+      <a href="../index.html#home" class="logo-nav flex items-center lg:justify-self-start shrink-0" aria-label="TurtleShells - início">
+        <img src="../assets/LOGO_BRANCO.svg" alt="" class="logo-default w-auto shrink-0" width="170" height="52" />
+        <img src="../assets/LOGO_VERDE.svg" alt="" class="logo-hover w-auto shrink-0" width="170" height="52" />
+      </a>
+      <div class="hidden lg:flex justify-center items-center gap-8 justify-self-center">
+        <a href="../index.html#home" class="nav-link-desktop text-[16px] font-medium text-[#f1f0ed] hover:text-[#ccff00] transition-colors duration-300">Home</a>
+        <a href="../index.html#services" class="nav-link-desktop text-[16px] font-medium text-[#f1f0ed] hover:text-[#ccff00] transition-colors duration-300">Services</a>
+        <a href="../index.html#cases" class="nav-link-desktop text-[16px] font-medium text-[#f1f0ed] hover:text-[#ccff00] transition-colors duration-300">Cases</a>
+        <a href="../index.html#process" class="nav-link-desktop text-[16px] font-medium text-[#f1f0ed] hover:text-[#ccff00] transition-colors duration-300">Process</a>
+      </div>
+      <div class="flex items-center justify-end gap-2 text-[#f1f0ed]">
+        <a href="../index.html#pricing" class="hidden lg:inline-block rounded-[12px] px-6 py-2.5 border-2 border-[#ccff00] bg-[#ccff00] text-[#0c1909] hover:bg-transparent hover:text-[#ccff00] transition-all duration-[350ms] ease-out font-semibold text-[15px] shadow-[4px_4px_0_0_#ccff00] hover:shadow-[2px_2px_0_0_#ccff00] hover:translate-x-[2px] hover:translate-y-[2px]">Contact Us</a>
+        <button id="menu-toggle" class="lg:hidden p-2 text-[#f1f0ed]" aria-label="Abrir menu" type="button">
+          <svg id="icon-menu" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="lg:hidden hidden py-5 border-t border-[#f1f0ed]/20">
+      <div class="flex flex-col gap-1 px-2">
+        <a href="../index.html#home" class="menu-link text-[16px] font-medium px-3 py-3 rounded-[10px] text-[#f1f0ed] hover:text-[#ccff00] hover:bg-white/5 transition-all">Home</a>
+        <a href="../index.html#services" class="menu-link text-[16px] font-medium px-3 py-3 rounded-[10px] text-[#f1f0ed] hover:text-[#ccff00] hover:bg-white/5 transition-all">Services</a>
+        <a href="../index.html#cases" class="menu-link text-[16px] font-medium px-3 py-3 rounded-[10px] text-[#f1f0ed] hover:text-[#ccff00] hover:bg-white/5 transition-all">Cases</a>
+        <a href="../index.html#process" class="menu-link text-[16px] font-medium px-3 py-3 rounded-[10px] text-[#f1f0ed] hover:text-[#ccff00] hover:bg-white/5 transition-all">Process</a>
+        <a href="../index.html#pricing" class="menu-link block mt-3 rounded-[12px] px-4 py-3.5 text-center border-2 border-[#ccff00] bg-[#ccff00] text-[#0c1909] font-semibold text-[15px] shadow-[4px_4px_0_0_#ccff00] active:shadow-[2px_2px_0_0_#ccff00] active:translate-x-[2px] active:translate-y-[2px] transition-all duration-200 w-full">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-24 pb-10 md:pt-32 md:pb-12 overflow-hidden">
+  <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
+    <div class="flex flex-col-reverse md:flex-row items-center gap-4 sm:gap-8 md:gap-0">
+      <div class="text-center md:text-left w-full md:w-[55%] md:shrink-0 relative z-10">
+        <div class="hero-reveal flex flex-col gap-4 md:gap-6">
+          <p class="text-[12px] sm:text-[14px] font-medium tracking-[0.12em] text-black/70 uppercase">Application Security</p>
+          <h1 class="text-[34px] sm:text-[43px] font-semibold leading-[1.08] tracking-[-0.03em] md:text-[52px] text-black">
+            Secure <span class="relative inline-block">Code <span class="hero-highlight absolute left-0 right-0 h-[10px] md:h-[12px] bg-[#ccff00] rounded-[8px] -z-[1]" style="bottom: 3px" aria-hidden="true"></span></span> Review
+          </h1>
+          <p class="text-[15px] md:text-[18px] font-normal leading-[1.65] text-black/80 max-w-[480px] mx-auto md:mx-0">Uncover hidden vulnerabilities before attackers do. We combine advanced automated analysis with expert manual inspection to fortify your software at the source.</p>
+        </div>
+      </div>
+      <div class="w-full md:w-[45%] flex items-center justify-center md:justify-end overflow-hidden">
+        <div class="hero-reveal hero-reveal-image w-full flex justify-center md:justify-end">
+          <img src="../assets/illustrations/7.svg" alt="Secure Code Review" class="w-full max-w-[260px] sm:max-w-[320px] md:max-w-none h-auto object-contain" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Overview -->
+<section class="py-12 md:py-16">
+  <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
+    <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-8 md:mb-10">
+      <h2 class="bg-[#ccff00] text-black rounded-[8px] px-[10px] py-[4px] text-[26px] sm:text-[32px] md:text-[40px] font-medium tracking-[-0.015em] leading-[1.15] shrink-0">Overview</h2>
+      <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.6] max-w-[36rem]">Preventing potential exploits at the source code level before they ever reach production.</p>
+    </div>
+    <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.7] max-w-[72ch] mb-6">A Secure Code Review is the most cost-effective way to find bugs early in your Software Development Lifecycle (SDLC). By analyzing the source code directly, we identify complex vulnerabilities, such as business logic flaws and authorization bypasses, that dynamic testing and automated scanners often miss.</p>
+    <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.7] max-w-[72ch]">We combine advanced automated Static Application Security Testing (SAST) tools with deep manual inspection by our security experts. This hybrid approach ensures comprehensive coverage across your codebase while minimizing false positives, giving your developers clear, contextual feedback they can act on immediately.</p>
+  </div>
+</section>
+
+<!-- Test Types -->
+<section class="py-12 md:py-16">
+  <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
+    <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-10 md:mb-14">
+      <h2 class="bg-[#ccff00] text-black rounded-[8px] px-[10px] py-[4px] text-[26px] sm:text-[32px] md:text-[40px] font-medium tracking-[-0.015em] leading-[1.15] shrink-0">What We Analyze</h2>
+      <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.6] max-w-[36rem]">We focus on application logic, authentication flows, cryptography validation, and data handling techniques.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-7">
+      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+        <div class="flex flex-row h-full min-h-[180px]">
+          <div class="flex flex-col justify-between p-5 md:p-7 flex-1">
+            <div>
+              <h3 class="text-[20px] md:text-[22px] font-medium tracking-[-0.01em] leading-[1.25] text-black mb-3"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Logic &amp;</span> <span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Flow</span></h3>
+              <p class="text-black/80 text-[14px] md:text-[15px] leading-[1.6]">We evaluate business logic implementation, application state management, and multi-step transaction integrity to uncover logical exploits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+        <div class="flex flex-row h-full min-h-[180px]">
+          <div class="flex flex-col justify-between p-5 md:p-7 flex-1">
+            <div>
+              <h3 class="text-[20px] md:text-[22px] font-medium tracking-[-0.01em] leading-[1.25] text-black mb-3"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Auth &amp;</span> <span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Access</span></h3>
+              <p class="text-black/80 text-[14px] md:text-[15px] leading-[1.6]">Deep dive into identity management, OAuth/SAML implementations, session handling, and rigorous enforcement of role-based access controls.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#1a1a1a] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+        <div class="flex flex-row h-full min-h-[180px]">
+          <div class="flex flex-col justify-between p-5 md:p-7 flex-1">
+            <div>
+              <h3 class="text-[20px] md:text-[22px] font-medium tracking-[-0.01em] leading-[1.25] text-white mb-3"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Data &amp;</span> <span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Crypto</span></h3>
+              <p class="text-white/80 text-[14px] md:text-[15px] leading-[1.6]">Rigorous analysis of input validation, safe output encoding, protection of data at rest/transit, and adherence to modern cryptographic standards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Methodology -->
+<section class="py-12 md:py-16">
+  <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
+    <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-10 md:mb-14">
+      <h2 class="bg-[#ccff00] text-black rounded-[8px] px-[10px] py-[4px] text-[26px] sm:text-[32px] md:text-[40px] font-medium tracking-[-0.015em] leading-[1.15] shrink-0">Methodology</h2>
+      <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.6] max-w-[36rem]">Every review follows a structured six-phase hybrid approach, blending automation with deep manual inspection.</p>
+    </div>
+    <div class="space-y-3 md:space-y-4" id="pentest-accordion">
+      <div class="pt-accordion-item rounded-[18px] border-2 border-black shadow-hard-md overflow-hidden transition-colors duration-200 bg-[#ccff00]" data-step="1">
+        <button type="button" class="pt-accordion-trigger w-full flex items-center justify-between p-6 md:p-8 min-h-[5rem] text-left">
+          <div class="flex items-center gap-5 md:gap-6">
+            <span class="hidden sm:block text-[40px] md:text-[48px] font-bold text-black tracking-tight leading-none">01</span>
+            <span class="text-[18px] md:text-[22px] font-medium text-black tracking-[-0.01em]">Scope &amp; Threat Model</span>
+          </div>
+          <div class="pt-accordion-icon w-12 h-12 rounded-full border-2 border-black flex items-center justify-center flex-shrink-0 transition-colors duration-200 bg-black text-white">
+            <svg class="pt-icon-minus w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="pt-icon-plus w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </button>
+        <div class="pt-accordion-content is-open">
+          <div class="pt-accordion-inner">
+            <div class="px-6 md:px-8 pb-8">
+              <div class="w-full h-[2px] bg-black mb-5"></div>
+              <p class="text-black/80 text-[16px] md:text-[18px] leading-[1.65]">We begin by defining the boundaries of the review and understanding the application's architecture. We identify the most critical assets, entry points, and trust boundaries to create a targeted threat model that guides where our security experts should spend their manual review time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-accordion-item rounded-[18px] border-2 border-black shadow-hard-md overflow-hidden transition-colors duration-200 bg-[#F3F3F3]" data-step="2">
+        <button type="button" class="pt-accordion-trigger w-full flex items-center justify-between p-6 md:p-8 min-h-[5rem] text-left">
+          <div class="flex items-center gap-5 md:gap-6">
+            <span class="hidden sm:block text-[40px] md:text-[48px] font-bold text-black tracking-tight leading-none">02</span>
+            <span class="text-[18px] md:text-[22px] font-medium text-black tracking-[-0.01em]">Automated Analysis</span>
+          </div>
+          <div class="pt-accordion-icon w-12 h-12 rounded-full border-2 border-black flex items-center justify-center flex-shrink-0 transition-colors duration-200 bg-[#F3F3F3] text-black">
+            <svg class="pt-icon-minus w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="pt-icon-plus w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </button>
+        <div class="pt-accordion-content">
+          <div class="pt-accordion-inner">
+            <div class="px-6 md:px-8 pb-8">
+              <div class="w-full h-[2px] bg-black mb-5"></div>
+              <p class="text-black/80 text-[16px] md:text-[18px] leading-[1.65]">We aggressively sweep the codebase using enterprise grade tools covering SAST (Static Application Security Testing), SCA (Software Composition Analysis), Secrets Detection, and IaC (Infrastructure as Code) scanning. This quickly identifies low-hanging fruit and known vulnerable dependencies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-accordion-item rounded-[18px] border-2 border-black shadow-hard-md overflow-hidden transition-colors duration-200 bg-[#F3F3F3]" data-step="3">
+        <button type="button" class="pt-accordion-trigger w-full flex items-center justify-between p-6 md:p-8 min-h-[5rem] text-left">
+          <div class="flex items-center gap-5 md:gap-6">
+            <span class="hidden sm:block text-[40px] md:text-[48px] font-bold text-black tracking-tight leading-none">03</span>
+            <span class="text-[18px] md:text-[22px] font-medium text-black tracking-[-0.01em]">Manual Inspection</span>
+          </div>
+          <div class="pt-accordion-icon w-12 h-12 rounded-full border-2 border-black flex items-center justify-center flex-shrink-0 transition-colors duration-200 bg-[#F3F3F3] text-black">
+            <svg class="pt-icon-minus w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="pt-icon-plus w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </button>
+        <div class="pt-accordion-content">
+          <div class="pt-accordion-inner">
+            <div class="px-6 md:px-8 pb-8">
+              <div class="w-full h-[2px] bg-black mb-5"></div>
+              <p class="text-black/80 text-[16px] md:text-[18px] leading-[1.65]">Our experts manually trace the flow of untrusted data from entry to storage, searching for complex flaws that automation misses: API authorization bypasses, race conditions, business logic manipulation, and subtle cryptographic errors.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-accordion-item rounded-[18px] border-2 border-black shadow-hard-md overflow-hidden transition-colors duration-200 bg-[#F3F3F3]" data-step="4">
+        <button type="button" class="pt-accordion-trigger w-full flex items-center justify-between p-6 md:p-8 min-h-[5rem] text-left">
+          <div class="flex items-center gap-5 md:gap-6">
+            <span class="hidden sm:block text-[40px] md:text-[48px] font-bold text-black tracking-tight leading-none">04</span>
+            <span class="text-[18px] md:text-[22px] font-medium text-black tracking-[-0.01em]">Vulnerability Verification</span>
+          </div>
+          <div class="pt-accordion-icon w-12 h-12 rounded-full border-2 border-black flex items-center justify-center flex-shrink-0 transition-colors duration-200 bg-[#F3F3F3] text-black">
+            <svg class="pt-icon-minus w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="pt-icon-plus w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </button>
+        <div class="pt-accordion-content">
+          <div class="pt-accordion-inner">
+            <div class="px-6 md:px-8 pb-8">
+              <div class="w-full h-[2px] bg-black mb-5"></div>
+              <p class="text-black/80 text-[16px] md:text-[18px] leading-[1.65]">We distill our findings to eliminate false positives. For every confirmed issue, we develop proof-of-concept conditions or outline exact scenarios in which an attacker could successfully exploit the vulnerability within your target environment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-accordion-item rounded-[18px] border-2 border-black shadow-hard-md overflow-hidden transition-colors duration-200 bg-[#F3F3F3]" data-step="5">
+        <button type="button" class="pt-accordion-trigger w-full flex items-center justify-between p-6 md:p-8 min-h-[5rem] text-left">
+          <div class="flex items-center gap-5 md:gap-6">
+            <span class="hidden sm:block text-[40px] md:text-[48px] font-bold text-black tracking-tight leading-none">05</span>
+            <span class="text-[18px] md:text-[22px] font-medium text-black tracking-[-0.01em]">Fix Recommendations</span>
+          </div>
+          <div class="pt-accordion-icon w-12 h-12 rounded-full border-2 border-black flex items-center justify-center flex-shrink-0 transition-colors duration-200 bg-[#F3F3F3] text-black">
+            <svg class="pt-icon-minus w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="pt-icon-plus w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </button>
+        <div class="pt-accordion-content">
+          <div class="pt-accordion-inner">
+            <div class="px-6 md:px-8 pb-8">
+              <div class="w-full h-[2px] bg-black mb-5"></div>
+              <p class="text-black/80 text-[16px] md:text-[18px] leading-[1.65]">Instead of just pointing out errors, we formulate tailored, developer-friendly remediation advice. This often includes secure code snippets, modern framework-specific configurations, or architectural design changes necessary to properly mitigate the root cause.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-accordion-item rounded-[18px] border-2 border-black shadow-hard-md overflow-hidden transition-colors duration-200 bg-[#F3F3F3]" data-step="6">
+        <button type="button" class="pt-accordion-trigger w-full flex items-center justify-between p-6 md:p-8 min-h-[5rem] text-left">
+          <div class="flex items-center gap-5 md:gap-6">
+            <span class="hidden sm:block text-[40px] md:text-[48px] font-bold text-black tracking-tight leading-none">06</span>
+            <span class="text-[18px] md:text-[22px] font-medium text-black tracking-[-0.01em]">Remediation Support</span>
+          </div>
+          <div class="pt-accordion-icon w-12 h-12 rounded-full border-2 border-black flex items-center justify-center flex-shrink-0 transition-colors duration-200 bg-[#F3F3F3] text-black">
+            <svg class="pt-icon-minus w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="pt-icon-plus w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </button>
+        <div class="pt-accordion-content">
+          <div class="pt-accordion-inner">
+            <div class="px-6 md:px-8 pb-8">
+              <div class="w-full h-[2px] bg-black mb-5"></div>
+              <p class="text-black/80 text-[16px] md:text-[18px] leading-[1.65]">We deliver the final report and walk your developers through the findings. We stand ready to provide clarification, answer questions during the patching process, and offer retest validation once fixes have been pushed to the code repository.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What you get -->
+<section class="py-12 md:py-16">
+  <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
+    <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-10 md:mb-14">
+      <h2 class="bg-[#ccff00] text-black rounded-[8px] px-[10px] py-[4px] text-[26px] sm:text-[32px] md:text-[40px] font-medium tracking-[-0.015em] leading-[1.15] shrink-0">What You Get</h2>
+      <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.6] max-w-[36rem]">You will receive a developer-friendly report containing precise root-cause analysis and actionable fixes.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+        <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
+        <div>
+          <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Vulnerability Findings</p>
+          <p class="text-black/70 text-[14px] md:text-[15px] leading-[1.6]">A comprehensive list of identified vulnerabilities mapped to the OWASP Top 10 and CWEs.</p>
+        </div>
+      </div>
+      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+        <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
+        <div>
+          <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Line-by-Line Context</p>
+          <p class="text-black/70 text-[14px] md:text-[15px] leading-[1.6]">Direct references to the affected files, functions, and critical logic points in your repository.</p>
+        </div>
+      </div>
+      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+        <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
+        <div>
+          <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Remediation Snippets</p>
+          <p class="text-black/70 text-[14px] md:text-[15px] leading-[1.6]">Tailored code examples and configuration guidance to effectively fix issues at their root source.</p>
+        </div>
+      </div>
+      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+        <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
+        <div>
+          <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Security Quality Metrics</p>
+          <p class="text-black/70 text-[14px] md:text-[15px] leading-[1.6]">Actionable metrics identifying recurring patterns, outdated dependencies, and overall secure coding habits.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-12 md:py-16">
+  <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
+    <div class="bg-black rounded-[18px] border-2 border-black shadow-hard-md overflow-hidden">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 p-8 md:p-12">
+        <div class="flex-1 text-center md:text-left">
+          <h2 class="text-[22px] md:text-[30px] font-medium text-white mb-3 tracking-[-0.01em]">Ready to secure your codebase?</h2>
+          <p class="text-white/70 text-[15px] md:text-[17px] leading-[1.6] max-w-[36rem]">Let's review your application. We'll outline a strategy to guide your path to resilience.</p>
+        </div>
+        <div class="flex-shrink-0">
+          <a href="../index.html#pricing" class="inline-block rounded-[12px] px-8 py-4 border-2 border-[#ccff00] bg-[#ccff00] text-[#0c1909] hover:bg-transparent hover:text-[#ccff00] transition-all duration-[350ms] ease-out font-semibold text-[16px] shadow-[4px_4px_0_0_#ccff00] hover:shadow-[2px_2px_0_0_#ccff00] hover:translate-x-[2px] hover:translate-y-[2px]">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black text-white">
+  <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-16">
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 mb-12">
+      <div class="space-y-6">
+        <a href="../index.html#home" class="logo-nav flex items-center" aria-label="TurtleShells - início">
+          <img src="../assets/LOGO_BRANCO.svg" alt="" class="logo-default h-[3.25rem] w-auto shrink-0" width="170" height="52" />
+          <img src="../assets/LOGO_VERDE.svg" alt="" class="logo-hover h-[3.25rem] w-auto shrink-0" width="170" height="52" />
+        </a>
+        <p class="text-white/80 max-w-md text-[14px] leading-[1.4]">Application security and penetration testing. Helping you build secure applications with confidence by turning risks into resilience.</p>
+        <div class="flex gap-3">
+          <a href="https://linkedin.com/company/turtleshells" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/10 rounded-full border-2 border-white/20 flex items-center justify-center hover:bg-[#ccff00] hover:border-[#ccff00] hover:text-black transition-all duration-200" aria-label="LinkedIn"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/10 rounded-full border-2 border-white/20 flex items-center justify-center hover:bg-[#ccff00] hover:border-[#ccff00] hover:text-black transition-all duration-200" aria-label="Instagram"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="space-y-4">
+          <h3 class="text-[16px] md:text-[18px] font-semibold text-white">Services</h3>
+          <ul class="space-y-2.5">
+            <li><a href="penetration-testing.html" class="nav-link-desktop inline-block text-white/70 hover:text-white transition-colors text-[13px] md:text-[14px]">Penetration Testing</a></li>
+            <li><a href="threat-modeling.html" class="nav-link-desktop inline-block text-white/70 hover:text-white transition-colors text-[13px] md:text-[14px]">Threat Modeling</a></li>
+            <li><a href="gap-analysis.html" class="nav-link-desktop inline-block text-white/70 hover:text-white transition-colors text-[13px] md:text-[14px]">Gap Analysis</a></li>
+            <li><a href="code-review.html" class="nav-link-desktop inline-block text-white/70 hover:text-white transition-colors text-[13px] md:text-[14px]">Code Review</a></li>
+            <li><a href="security-assessment.html" class="nav-link-desktop inline-block text-white/70 hover:text-white transition-colors text-[13px] md:text-[14px]">Security Assessment</a></li>
+            <li><a href="security-training.html" class="nav-link-desktop inline-block text-white/70 hover:text-white transition-colors text-[13px] md:text-[14px]">Security Training</a></li>
+          </ul>
+        </div>
+        <div class="space-y-4">
+          <h3 class="text-[16px] md:text-[18px] font-semibold text-white">Company</h3>
+          <ul class="space-y-2.5">
+            <li><a href="../index.html#process" class="nav-link-desktop inline-block text-white/70 hover:text-white transition-colors text-[13px] md:text-[14px]">How We Work</a></li>
+            <li><a href="../index.html#cases" class="nav-link-desktop inline-block text-white/70 hover:text-white transition-colors text-[13px] md:text-[14px]">Case Studies</a></li>
+            <li><a href="../index.html#pricing" class="nav-link-desktop inline-block text-white/70 hover:text-white transition-colors text-[13px] md:text-[14px]">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-8">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-white/60 text-[13px] md:text-[14px]">
+        <p>&copy; <span class="footer-year"></span> TurtleShells. All rights reserved.</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href="#" class="nav-link-desktop inline-block hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="nav-link-desktop inline-block hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" class="nav-link-desktop inline-block hover:text-white transition-colors">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var yearEl = document.querySelector('.footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  var menuToggle = document.getElementById('menu-toggle');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var iconMenu = document.getElementById('icon-menu');
+  var iconClose = document.getElementById('icon-close');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', function () {
+      var isHidden = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', !isHidden);
+      if (iconMenu && iconClose) {
+        iconMenu.classList.toggle('hidden', !isHidden);
+        iconClose.classList.toggle('hidden', isHidden);
+      }
+    });
+  }
+  document.querySelectorAll('.menu-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (mobileMenu) mobileMenu.classList.add('hidden');
+      if (iconMenu) iconMenu.classList.remove('hidden');
+      if (iconClose) iconClose.classList.add('hidden');
+    });
+  });
+  var navbar = document.getElementById('navbar');
+  function onScroll() {
+    if (!navbar) return;
+    if (window.scrollY > 20) navbar.classList.add('nav-scrolled');
+    else navbar.classList.remove('nav-scrolled');
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Pentest methodology accordion
+  document.querySelectorAll('.pt-accordion-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = this.closest('.pt-accordion-item');
+      var content = item.querySelector('.pt-accordion-content');
+      var iconWrap = item.querySelector('.pt-accordion-icon');
+      var isOpen = content.classList.contains('is-open');
+
+      // Close all items
+      document.querySelectorAll('.pt-accordion-item').forEach(function (other) {
+        var c = other.querySelector('.pt-accordion-content');
+        var iw = other.querySelector('.pt-accordion-icon');
+        var minus = iw && iw.querySelector('.pt-icon-minus');
+        var plus = iw && iw.querySelector('.pt-icon-plus');
+        other.classList.remove('bg-[#ccff00]');
+        other.classList.add('bg-[#F3F3F3]');
+        if (c) c.classList.remove('is-open');
+        if (minus) minus.classList.add('hidden');
+        if (plus) plus.classList.remove('hidden');
+        if (iw) {
+          iw.classList.remove('bg-black', 'text-white');
+          iw.classList.add('bg-[#F3F3F3]', 'text-black');
+        }
+      });
+
+      // If it was closed, open it
+      if (!isOpen) {
+        item.classList.remove('bg-[#F3F3F3]');
+        item.classList.add('bg-[#ccff00]');
+        content.classList.add('is-open');
+        if (iconWrap) {
+          var m = iconWrap.querySelector('.pt-icon-minus');
+          var p = iconWrap.querySelector('.pt-icon-plus');
+          if (m) m.classList.remove('hidden');
+          if (p) p.classList.add('hidden');
+          iconWrap.classList.remove('bg-[#F3F3F3]', 'text-black');
+          iconWrap.classList.add('bg-black', 'text-white');
+        }
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
