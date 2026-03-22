@@ -118,6 +118,9 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
+    @media (hover: none) {
+      .card-hover { transform: none !important; box-shadow: 6px 6px 0px #000000 !important; }
+    }
     @media (max-width: 639px) {
       .pt-accordion-trigger { min-height: 3.75rem; }
     }
@@ -235,7 +238,7 @@
       <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.6] max-w-[36rem]">We cover the critical components where modern businesses introduce the most design risk.</p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-7">
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[180px]">
           <div class="flex flex-col justify-between p-5 md:p-7 flex-1">
             <div>
@@ -245,7 +248,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[180px]">
           <div class="flex flex-col justify-between p-5 md:p-7 flex-1">
             <div>
@@ -255,7 +258,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-[#1a1a1a] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#1a1a1a] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[180px]">
           <div class="flex flex-col justify-between p-5 md:p-7 flex-1">
             <div>
@@ -409,28 +412,28 @@
       <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.6] max-w-[36rem]">You will receive a single, consolidated final report containing everything your engineering and leadership teams need to act on the findings.</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
         <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
         <div>
           <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Threat Model Diagrams</p>
           <p class="text-black/70 text-[14px] md:text-[15px] leading-[1.6]">Clear, visual representations of your system architecture and data flows highlighting trust boundaries.</p>
         </div>
       </div>
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
         <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
         <div>
           <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Identified Threat Inventory</p>
           <p class="text-black/70 text-[14px] md:text-[15px] leading-[1.6]">A detailed list of potential vulnerabilities and threats specific to your design, categorized by severity.</p>
         </div>
       </div>
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
         <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
         <div>
           <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Risk Prioritization Matrix</p>
           <p class="text-black/70 text-[14px] md:text-[15px] leading-[1.6]">A heat map of risks to help your engineering teams focus on the most critical design vulnerabilities first.</p>
         </div>
       </div>
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
         <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
         <div>
           <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Actionable Mitigations</p>

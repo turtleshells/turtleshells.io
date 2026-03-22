@@ -128,6 +128,9 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
+    @media (hover: none) {
+      .card-hover { transform: none !important; box-shadow: 6px 6px 0px #000000 !important; }
+    }
     @media (max-width: 639px) {
       .accordion-trigger { min-height: 3.75rem; }
       .pin-tooltip { display: none; }
@@ -221,7 +224,7 @@
       </div>
       <div class="w-full md:w-[55%] flex items-center justify-center md:justify-end overflow-hidden">
         <div class="hero-reveal hero-reveal-image w-full flex justify-center md:justify-end">
-          <img src="assets/illustrations/13.svg" alt="TurtleShells cybersecurity services - protecting your digital assets" class="w-full max-w-[280px] sm:max-w-[360px] md:max-w-none h-auto object-contain md:scale-[1.6] md:translate-x-[5%]" />
+          <img src="assets/illustrations/13.svg" alt="TurtleShells cybersecurity services - protecting your digital assets" class="w-full max-w-[280px] sm:max-w-[360px] md:max-w-[90%] lg:max-w-none h-auto object-contain lg:scale-[1.6] lg:translate-x-[5%]" />
         </div>
       </div>
     </div>
@@ -236,7 +239,7 @@
       <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.6] max-w-[36rem]">We offer a full range of application security services to protect your business from evolving cyber threats.</p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-7">
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
             <div>
@@ -247,7 +250,7 @@
           <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/1.svg" alt="Penetration testing services - simulated cyber attacks to find vulnerabilities" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
-      <div class="bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
             <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Threat</span> <span class="inline-block rounded-[8px] px-1.5 bg-white text-black mt-1">Modeling</span></h3></div>
@@ -256,7 +259,7 @@
           <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/3_green.svg" alt="Threat modeling - identifying security design flaws and architectural risks" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
-      <div class="bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
             <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Gap</span> <span class="inline-block rounded-[8px] px-1.5 bg-white text-black mt-1">Analysis</span></h3></div>
@@ -265,7 +268,7 @@
           <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/5_white_accent.svg" alt="Gap analysis - evaluating security posture gaps against industry standards" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
             <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Code</span> <span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black mt-1">Review</span></h3></div>
@@ -274,7 +277,7 @@
           <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/7.svg" alt="Secure code review - finding hidden vulnerabilities in source code" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
             <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Security</span> <span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black mt-1">Assessment</span></h3></div>
@@ -283,7 +286,7 @@
           <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/9_green.svg" alt="Security assessment - comprehensive evaluation of your security posture" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
-      <div class="bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
             <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Security</span> <span class="inline-block rounded-[8px] px-1.5 bg-white text-black mt-1">Training</span></h3></div>

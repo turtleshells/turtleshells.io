@@ -118,6 +118,9 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
+    @media (hover: none) {
+      .card-hover { transform: none !important; box-shadow: 6px 6px 0px #000000 !important; }
+    }
     @media (max-width: 639px) {
       .pt-accordion-trigger { min-height: 3.75rem; }
     }
@@ -235,7 +238,7 @@
       <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.6] max-w-[36rem]">We focus on application logic, authentication flows, cryptography validation, and data handling techniques.</p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-7">
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[180px]">
           <div class="flex flex-col justify-between p-5 md:p-7 flex-1">
             <div>
@@ -245,7 +248,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[180px]">
           <div class="flex flex-col justify-between p-5 md:p-7 flex-1">
             <div>
@@ -255,7 +258,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-[#1a1a1a] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
+      <div class="card-hover bg-[#1a1a1a] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[180px]">
           <div class="flex flex-col justify-between p-5 md:p-7 flex-1">
             <div>
@@ -409,28 +412,28 @@
       <p class="text-black/80 text-[15px] md:text-[18px] leading-[1.6] max-w-[36rem]">You will receive a developer-friendly report containing precise root-cause analysis and actionable fixes.</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
         <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
         <div>
           <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Vulnerability Findings</p>
           <p class="text-black/70 text-[14px] md:text-[15px] leading-[1.6]">A comprehensive list of identified vulnerabilities mapped to the OWASP Top 10 and CWEs.</p>
         </div>
       </div>
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
         <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
         <div>
           <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Line-by-Line Context</p>
           <p class="text-black/70 text-[14px] md:text-[15px] leading-[1.6]">Direct references to the affected files, functions, and critical logic points in your repository.</p>
         </div>
       </div>
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
         <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
         <div>
           <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Remediation Snippets</p>
           <p class="text-black/70 text-[14px] md:text-[15px] leading-[1.6]">Tailored code examples and configuration guidance to effectively fix issues at their root source.</p>
         </div>
       </div>
-      <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
+      <div class="card-hover bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden p-5 md:p-6 flex items-start gap-4">
         <span class="w-6 h-6 rounded-full bg-[#ccff00] border-2 border-black flex-shrink-0 mt-0.5"></span>
         <div>
           <p class="font-medium text-black text-[15px] md:text-[16px] mb-1">Security Quality Metrics</p>
