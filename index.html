@@ -12,15 +12,26 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TurtleShells - Cybersecurity services and application security testing" />
+  <meta name="description" content="TurtleShells provides expert cybersecurity services including penetration testing, threat modeling, secure code review, gap analysis, and security training to protect your digital assets." />
   <meta name="author" content="TurtleShells" />
-  <title>TurtleShells</title>
+  <meta name="robots" content="index, follow" />
+  <title>TurtleShells | Cybersecurity Services &amp; Application Security Testing</title>
+  <link rel="canonical" href="https://www.turtleshells.io/" />
   <link rel="icon" type="image/png" href="assets/simbolo_png_2.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <meta property="og:title" content="TurtleShells" />
-  <meta property="og:description" content="TurtleShells - Cybersecurity services and application security testing" />
+  <meta property="og:title" content="TurtleShells | Cybersecurity Services &amp; Application Security Testing" />
+  <meta property="og:description" content="Expert cybersecurity services including penetration testing, threat modeling, secure code review, gap analysis, and security training to protect your digital assets." />
+  <meta property="og:url" content="https://www.turtleshells.io/" />
+  <meta property="og:image" content="https://www.turtleshells.io/assets/LOGO_VERDE.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TurtleShells" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="TurtleShells | Cybersecurity Services &amp; Application Security Testing" />
+  <meta name="twitter:description" content="Expert cybersecurity services including penetration testing, threat modeling, secure code review, gap analysis, and security training." />
+  <meta name="twitter:image" content="https://www.turtleshells.io/assets/LOGO_VERDE.svg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -133,16 +144,35 @@
       overflow: hidden;
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TurtleShells",
+    "url": "https://www.turtleshells.io",
+    "logo": "https://www.turtleshells.io/assets/LOGO_VERDE.svg",
+    "description": "Expert cybersecurity services including penetration testing, threat modeling, secure code review, gap analysis, security assessment, and security training.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@turtleshells.io",
+      "contactType": "customer service"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/turtleshells"
+    ]
+  }
+  </script>
 </head>
 <body class="min-h-screen bg-white font-sans text-black antialiased">
 
 <!-- Navbar -->
+<header>
 <nav id="navbar" class="nav-header fixed top-0 left-0 right-0 z-50 transition-all duration-200 text-[#f1f0ed]" style="background-color: var(--color-black);">
   <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
     <div class="flex items-center justify-between h-16 md:h-20 lg:grid lg:grid-cols-3">
-      <a href="#home" class="logo-nav flex items-center lg:justify-self-start shrink-0" aria-label="TurtleShells - início">
-        <img src="assets/LOGO_BRANCO.svg" alt="" class="logo-default w-auto shrink-0" width="170" height="52" />
-        <img src="assets/LOGO_VERDE.svg" alt="" class="logo-hover w-auto shrink-0" width="170" height="52" />
+      <a href="#home" class="logo-nav flex items-center lg:justify-self-start shrink-0" aria-label="TurtleShells - home">
+        <img src="assets/LOGO_BRANCO.svg" alt="TurtleShells cybersecurity logo" class="logo-default w-auto shrink-0" width="170" height="52" />
+        <img src="assets/LOGO_VERDE.svg" alt="TurtleShells cybersecurity logo" class="logo-hover w-auto shrink-0" width="170" height="52" />
       </a>
       <div class="hidden lg:flex justify-center items-center gap-8 justify-self-center">
         <a href="#home" class="nav-link-desktop text-[16px] font-medium text-[#f1f0ed] hover:text-[#ccff00] transition-colors duration-300">Home</a>
@@ -152,7 +182,7 @@
       </div>
       <div class="flex items-center justify-end gap-2 text-[#f1f0ed]">
         <a href="#pricing" class="hidden lg:inline-block rounded-[12px] px-6 py-2.5 border-2 border-[#ccff00] bg-[#ccff00] text-[#0c1909] hover:bg-transparent hover:text-[#ccff00] transition-all duration-[350ms] ease-out font-semibold text-[15px] shadow-[4px_4px_0_0_#ccff00] hover:shadow-[2px_2px_0_0_#ccff00] hover:translate-x-[2px] hover:translate-y-[2px]">Contact Us</a>
-        <button id="menu-toggle" class="lg:hidden p-2 text-[#f1f0ed]" aria-label="Abrir menu" type="button">
+        <button id="menu-toggle" class="lg:hidden p-2 text-[#f1f0ed]" aria-label="Open menu" type="button">
           <svg id="icon-menu" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
           <svg id="icon-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
@@ -169,8 +199,10 @@
     </div>
   </div>
 </nav>
+</header>
 
 <!-- Hero -->
+<main>
 <section id="home" class="pt-24 pb-10 md:pt-32 md:pb-12 bg-white overflow-hidden">
   <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
     <div class="flex flex-col-reverse md:flex-row items-center gap-4 sm:gap-8 md:gap-0">
@@ -183,13 +215,13 @@
           <p class="text-[15px] md:text-[18px] font-normal leading-[1.65] text-black/80 max-w-[420px] mx-auto md:mx-0">Helping you build secure applications with confidence by turning risks into resilience through expert security testing.</p>
           <div class="flex flex-wrap justify-center md:justify-start gap-3 pt-1">
             <a href="#services" class="inline-block rounded-[12px] px-5 py-3 border-2 border-black bg-[#ccff00] text-black hover:bg-black hover:text-[#ccff00] transition-all duration-[350ms] ease-out font-semibold text-[15px] shadow-[4px_4px_0_0_#000] hover:shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px]">Our Services</a>
-            <a href="#pricing" class="inline-block rounded-[12px] px-5 py-3 border-2 border-black bg-[#ccff00] text-black shadow-[4px_4px_0_0_#000] hover:bg-black hover:text-[#ccff00] hover:shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-[350ms] ease-out font-semibold text-[15px]">Get in Touch</a>
+            <a href="#pricing" class="inline-block rounded-[12px] px-6 py-3 border-2 border-black bg-white text-black hover:bg-black hover:text-[#ccff00] transition-all duration-[350ms] ease-out font-semibold text-[15px] shadow-[4px_4px_0_0_#000] hover:shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px]">Get in Touch</a>
           </div>
         </div>
       </div>
       <div class="w-full md:w-[55%] flex items-center justify-center md:justify-end overflow-hidden">
         <div class="hero-reveal hero-reveal-image w-full flex justify-center md:justify-end">
-          <img src="assets/illustrations/13.svg" alt="Security Illustration" class="w-full max-w-[280px] sm:max-w-[360px] md:max-w-none h-auto object-contain md:scale-[1.6] md:translate-x-[5%]" />
+          <img src="assets/illustrations/13.svg" alt="TurtleShells cybersecurity services - protecting your digital assets" class="w-full max-w-[280px] sm:max-w-[360px] md:max-w-none h-auto object-contain md:scale-[1.6] md:translate-x-[5%]" />
         </div>
       </div>
     </div>
@@ -208,57 +240,56 @@
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
             <div>
-              <h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Penetration</span></h3>
-              <h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] mt-1 text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Testing</span></h3>
+              <h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Penetration</span> <span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black mt-1">Testing</span></h3>
             </div>
             <div class="mt-4 md:mt-6"><a href="services/penetration-testing.html" class="inline-flex items-center gap-2 group/link"><span class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-200 bg-black text-white group-hover/link:bg-[#ccff00] group-hover/link:text-black"><svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span><span class="font-medium text-[14px] md:text-[16px] text-black">Learn more</span></a></div>
           </div>
-          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/1.svg" alt="Penetration Testing" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" /></div>
+          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/1.svg" alt="Penetration testing services - simulated cyber attacks to find vulnerabilities" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
       <div class="bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
-            <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Threat</span></h3><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] mt-1 text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Modeling</span></h3></div>
+            <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Threat</span> <span class="inline-block rounded-[8px] px-1.5 bg-white text-black mt-1">Modeling</span></h3></div>
             <div class="mt-4 md:mt-6"><a href="services/threat-modeling.html" class="inline-flex items-center gap-2 group/link"><span class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-black text-white group-hover/link:bg-white group-hover/link:text-black transition-all duration-200"><svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span><span class="font-medium text-[14px] md:text-[16px] text-black">Learn more</span></a></div>
           </div>
-          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/3_green.svg" alt="Threat Modeling" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" /></div>
+          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/3_green.svg" alt="Threat modeling - identifying security design flaws and architectural risks" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
       <div class="bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
-            <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Gap</span></h3><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] mt-1 text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Analysis</span></h3></div>
+            <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Gap</span> <span class="inline-block rounded-[8px] px-1.5 bg-white text-black mt-1">Analysis</span></h3></div>
             <div class="mt-4 md:mt-6"><a href="services/gap-analysis.html" class="inline-flex items-center gap-2 group/link"><span class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-black text-white group-hover/link:bg-white group-hover/link:text-black transition-all duration-200"><svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span><span class="font-medium text-[14px] md:text-[16px] text-black">Learn more</span></a></div>
           </div>
-          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/5_white_accent.svg" alt="Gap Analysis" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" /></div>
+          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/5_white_accent.svg" alt="Gap analysis - evaluating security posture gaps against industry standards" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
       <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
-            <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Code</span></h3><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] mt-1 text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Review</span></h3></div>
+            <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Code</span> <span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black mt-1">Review</span></h3></div>
             <div class="mt-4 md:mt-6"><a href="services/code-review.html" class="inline-flex items-center gap-2 group/link"><span class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-black text-white group-hover/link:bg-[#ccff00] group-hover/link:text-black transition-all duration-200"><svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span><span class="font-medium text-[14px] md:text-[16px] text-black">Learn more</span></a></div>
           </div>
-          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/7.svg" alt="Code Review" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" /></div>
+          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/7.svg" alt="Secure code review - finding hidden vulnerabilities in source code" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
       <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
-            <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Security</span></h3><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] mt-1 text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Assessment</span></h3></div>
+            <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black">Security</span> <span class="inline-block rounded-[8px] px-1.5 bg-[#ccff00] text-black mt-1">Assessment</span></h3></div>
             <div class="mt-4 md:mt-6"><a href="services/security-assessment.html" class="inline-flex items-center gap-2 group/link"><span class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-black text-white group-hover/link:bg-[#ccff00] group-hover/link:text-black transition-all duration-200"><svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span><span class="font-medium text-[14px] md:text-[16px] text-black">Learn more</span></a></div>
           </div>
-          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/9_green.svg" alt="Security Assessment" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" /></div>
+          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/9_green.svg" alt="Security assessment - comprehensive evaluation of your security posture" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
       <div class="bg-[#ccff00] rounded-[18px] border-2 border-black shadow-hard-md hover:shadow-hard-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden">
         <div class="flex flex-row h-full min-h-[160px] md:min-h-[200px]">
           <div class="flex flex-col justify-between p-4 md:p-7 w-[58%] shrink-0">
-            <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Security</span></h3><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] mt-1 text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Training</span></h3></div>
+            <div><h3 class="text-[20px] md:text-[26px] font-medium tracking-[-0.01em] leading-[1.25] text-black"><span class="inline-block rounded-[8px] px-1.5 bg-white text-black">Security</span> <span class="inline-block rounded-[8px] px-1.5 bg-white text-black mt-1">Training</span></h3></div>
             <div class="mt-4 md:mt-6"><a href="services/security-training.html" class="inline-flex items-center gap-2 group/link"><span class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-black text-white group-hover/link:bg-white group-hover/link:text-black transition-all duration-200"><svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span><span class="font-medium text-[14px] md:text-[16px] text-black">Learn more</span></a></div>
           </div>
-          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/11_white_accent.svg" alt="Security Training" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" /></div>
+          <div class="w-[42%] flex items-center justify-center p-2 md:p-5 overflow-hidden"><img src="assets/illustrations/11_white_accent.svg" alt="Security training - empowering engineering teams to build secure software" class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] object-contain scale-[1.3] md:scale-[1.6]" loading="lazy" /></div>
         </div>
       </div>
     </div>
@@ -282,7 +313,7 @@
         </div>
         <div class="w-full md:w-[60%] relative flex items-center">
           <div class="relative w-full">
-            <img src="assets/world_map.svg" alt="TurtleShells global presence" class="w-full h-auto object-contain" />
+            <img src="assets/world_map.svg" alt="TurtleShells global presence - cybersecurity services worldwide across Americas and EMEA" class="w-full h-auto object-contain" loading="lazy" />
             <div class="pin absolute cursor-pointer" data-pin="Brazil" style="left: 35%; top: 70%; transform: translate(-50%, -50%);">
               <div class="pin-dot w-4 h-4 md:w-5 md:h-5 rounded-full border-2 flex items-center justify-center transition-all duration-200 bg-[#ccff00]/30 border-[#ccff00]"><div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#ccff00]"></div></div>
               <div class="pin-tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-white text-black text-[13px] font-medium rounded-[8px] whitespace-nowrap shadow-hard-sm border border-black pointer-events-none transition-all duration-200 opacity-0 translate-y-1">Brazil</div>
@@ -477,7 +508,7 @@
     <div class="bg-[#F3F3F3] rounded-[18px] border-2 border-black shadow-[4px_4px_0_0_#000] overflow-hidden">
       <div class="flex flex-col lg:flex-row">
         <div class="hidden lg:flex items-center justify-center lg:w-[40%] relative overflow-hidden">
-          <img src="assets/illustrations/14.svg" alt="Contact Illustration" class="w-[420px] h-[420px] object-contain scale-[1.6]" />
+          <img src="assets/illustrations/14.svg" alt="Contact TurtleShells for cybersecurity consulting and security services" class="w-[420px] h-[420px] object-contain scale-[1.6]" loading="lazy" />
         </div>
         <div class="flex-1 p-6 md:p-10 lg:p-12 flex items-center justify-center">
           <div class="flex flex-col gap-6 md:gap-8 w-full justify-center">
@@ -505,15 +536,16 @@
     </div>
   </div>
 </section>
+</main>
 
 <!-- Footer -->
 <footer class="bg-black text-white">
   <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-16">
     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 mb-12">
       <div class="space-y-6">
-        <a href="#home" class="logo-nav flex items-center" aria-label="TurtleShells - início">
-          <img src="assets/LOGO_BRANCO.svg" alt="" class="logo-default h-[3.25rem] w-auto shrink-0" width="170" height="52" />
-          <img src="assets/LOGO_VERDE.svg" alt="" class="logo-hover h-[3.25rem] w-auto shrink-0" width="170" height="52" />
+        <a href="#home" class="logo-nav flex items-center" aria-label="TurtleShells - home">
+          <img src="assets/LOGO_BRANCO.svg" alt="TurtleShells logo" class="logo-default h-[3.25rem] w-auto shrink-0" width="170" height="52" />
+          <img src="assets/LOGO_VERDE.svg" alt="TurtleShells logo" class="logo-hover h-[3.25rem] w-auto shrink-0" width="170" height="52" />
         </a>
         <p class="text-white/80 max-w-md text-[14px] leading-[1.4]">Application security and penetration testing. Helping you build secure applications with confidence by turning risks into resilience.</p>
         <div class="flex gap-3">
@@ -547,9 +579,9 @@
       <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-white/60 text-[13px] md:text-[14px]">
         <p>&copy; <span class="footer-year"></span> TurtleShells. All rights reserved.</p>
         <div class="flex flex-wrap gap-x-5 gap-y-2">
-          <a href="#" class="nav-link-desktop inline-block hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" class="nav-link-desktop inline-block hover:text-white transition-colors">Terms of Service</a>
-          <a href="#" class="nav-link-desktop inline-block hover:text-white transition-colors">Cookie Policy</a>
+          <span class="inline-block">Privacy Policy</span>
+          <span class="inline-block">Terms of Service</span>
+          <span class="inline-block">Cookie Policy</span>
         </div>
       </div>
     </div>

@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0XBRD2V7S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K0XBRD2V7S');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Security Assessment by TurtleShells - A comprehensive, framework-driven evaluation of your security posture." />
   <meta name="author" content="TurtleShells" />
+  <meta name="robots" content="index, follow" />
   <title>TurtleShells | Security Assessment</title>
   <link rel="icon" type="image/png" href="../assets/simbolo_png_2.png" />
+  <link rel="canonical" href="https://www.turtleshells.io/services/security-assessment.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <meta property="og:title" content="TurtleShells | Security Assessment - Comprehensive Security Evaluation" />
+  <meta property="og:description" content="Security Assessment by TurtleShells - A comprehensive, framework-driven evaluation of your security posture." />
+  <meta property="og:url" content="https://www.turtleshells.io/services/security-assessment.html" />
+  <meta property="og:image" content="https://www.turtleshells.io/assets/LOGO_VERDE.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TurtleShells" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="TurtleShells | Security Assessment" />
+  <meta name="twitter:description" content="A comprehensive, framework-driven evaluation of your security posture." />
+  <meta name="twitter:image" content="https://www.turtleshells.io/assets/LOGO_VERDE.svg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -113,16 +133,37 @@
       overflow: hidden;
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Security Assessment",
+    "provider": { "@type": "Organization", "name": "TurtleShells", "url": "https://www.turtleshells.io" },
+    "description": "A comprehensive, framework-driven evaluation of your security posture covering policies, controls, and technical infrastructure.",
+    "url": "https://www.turtleshells.io/services/security-assessment.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.turtleshells.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Security Assessment", "item": "https://www.turtleshells.io/services/security-assessment.html" }
+    ]
+  }
+  </script>
 </head>
 <body class="min-h-screen bg-white font-sans text-black antialiased">
 
 <!-- Navbar -->
+<header>
 <nav id="navbar" class="nav-header fixed top-0 left-0 right-0 z-50 transition-all duration-200 text-[#f1f0ed]" style="background-color: var(--color-black);">
   <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
     <div class="flex items-center justify-between h-16 md:h-20 lg:grid lg:grid-cols-3">
-      <a href="../index.html#home" class="logo-nav flex items-center lg:justify-self-start shrink-0" aria-label="TurtleShells - início">
-        <img src="../assets/LOGO_BRANCO.svg" alt="" class="logo-default w-auto shrink-0" width="170" height="52" />
-        <img src="../assets/LOGO_VERDE.svg" alt="" class="logo-hover w-auto shrink-0" width="170" height="52" />
+      <a href="../index.html#home" class="logo-nav flex items-center lg:justify-self-start shrink-0" aria-label="TurtleShells - home">
+        <img src="../assets/LOGO_BRANCO.svg" alt="TurtleShells cybersecurity logo" class="logo-default w-auto shrink-0" width="170" height="52" />
+        <img src="../assets/LOGO_VERDE.svg" alt="TurtleShells cybersecurity logo" class="logo-hover w-auto shrink-0" width="170" height="52" />
       </a>
       <div class="hidden lg:flex justify-center items-center gap-8 justify-self-center">
         <a href="../index.html#home" class="nav-link-desktop text-[16px] font-medium text-[#f1f0ed] hover:text-[#ccff00] transition-colors duration-300">Home</a>
@@ -132,7 +173,7 @@
       </div>
       <div class="flex items-center justify-end gap-2 text-[#f1f0ed]">
         <a href="../index.html#pricing" class="hidden lg:inline-block rounded-[12px] px-6 py-2.5 border-2 border-[#ccff00] bg-[#ccff00] text-[#0c1909] hover:bg-transparent hover:text-[#ccff00] transition-all duration-[350ms] ease-out font-semibold text-[15px] shadow-[4px_4px_0_0_#ccff00] hover:shadow-[2px_2px_0_0_#ccff00] hover:translate-x-[2px] hover:translate-y-[2px]">Contact Us</a>
-        <button id="menu-toggle" class="lg:hidden p-2 text-[#f1f0ed]" aria-label="Abrir menu" type="button">
+        <button id="menu-toggle" class="lg:hidden p-2 text-[#f1f0ed]" aria-label="Open menu" type="button">
           <svg id="icon-menu" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
           <svg id="icon-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
@@ -149,7 +190,9 @@
     </div>
   </div>
 </nav>
+</header>
 
+<main>
 <!-- Hero -->
 <section class="pt-24 pb-10 md:pt-32 md:pb-12 overflow-hidden">
   <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
@@ -165,7 +208,7 @@
       </div>
       <div class="w-full md:w-[45%] flex items-center justify-center md:justify-end overflow-hidden">
         <div class="hero-reveal hero-reveal-image w-full flex justify-center md:justify-end">
-          <img src="../assets/illustrations/9_green.svg" alt="Security Assessment" class="w-full max-w-[260px] sm:max-w-[320px] md:max-w-none h-auto object-contain" />
+          <img src="../assets/illustrations/9_green.svg" alt="Security assessment - comprehensive evaluation of your security posture" class="w-full max-w-[260px] sm:max-w-[320px] md:max-w-none h-auto object-contain" loading="lazy" />
         </div>
       </div>
     </div>
@@ -414,15 +457,16 @@
     </div>
   </div>
 </section>
+</main>
 
 <!-- Footer -->
 <footer class="bg-black text-white">
   <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-16">
     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 mb-12">
       <div class="space-y-6">
-        <a href="../index.html#home" class="logo-nav flex items-center" aria-label="TurtleShells - início">
-          <img src="../assets/LOGO_BRANCO.svg" alt="" class="logo-default h-[3.25rem] w-auto shrink-0" width="170" height="52" />
-          <img src="../assets/LOGO_VERDE.svg" alt="" class="logo-hover h-[3.25rem] w-auto shrink-0" width="170" height="52" />
+        <a href="../index.html#home" class="logo-nav flex items-center" aria-label="TurtleShells - home">
+          <img src="../assets/LOGO_BRANCO.svg" alt="TurtleShells logo" class="logo-default h-[3.25rem] w-auto shrink-0" width="170" height="52" />
+          <img src="../assets/LOGO_VERDE.svg" alt="TurtleShells logo" class="logo-hover h-[3.25rem] w-auto shrink-0" width="170" height="52" />
         </a>
         <p class="text-white/80 max-w-md text-[14px] leading-[1.4]">Application security and penetration testing. Helping you build secure applications with confidence by turning risks into resilience.</p>
         <div class="flex gap-3">
@@ -456,9 +500,9 @@
       <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-white/60 text-[13px] md:text-[14px]">
         <p>&copy; <span class="footer-year"></span> TurtleShells. All rights reserved.</p>
         <div class="flex flex-wrap gap-x-5 gap-y-2">
-          <a href="#" class="nav-link-desktop inline-block hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" class="nav-link-desktop inline-block hover:text-white transition-colors">Terms of Service</a>
-          <a href="#" class="nav-link-desktop inline-block hover:text-white transition-colors">Cookie Policy</a>
+          <span class="inline-block">Privacy Policy</span>
+          <span class="inline-block">Terms of Service</span>
+          <span class="inline-block">Cookie Policy</span>
         </div>
       </div>
     </div>

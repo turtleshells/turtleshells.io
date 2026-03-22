@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Page not found - TurtleShells Cybersecurity Services" />
+  <meta name="robots" content="noindex, follow" />
+  <title>Page Not Found | TurtleShells</title>
+  <link rel="icon" type="image/png" href="assets/simbolo_png_2.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          maxWidth: { page: '1200px' },
+          fontFamily: {
+            sans: ['Figtree', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['Syne', 'Figtree', 'ui-sans-serif', 'sans-serif']
+          },
+          transitionDuration: { 250: '250ms', 350: '350ms' }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --color-green: #ccff00;
+      --color-black: #000000;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Figtree', sans-serif;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --duration: 0.35s;
+    }
+    body { font-family: var(--font-body); }
+    h1, h2, h3, .font-display { font-family: var(--font-display); }
+    * { -webkit-tap-highlight-color: transparent; }
+    a, button { touch-action: manipulation; }
+    .nav-link-desktop { position: relative; }
+    .nav-link-desktop::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--color-green); transition: width var(--duration) var(--ease-out); }
+    .nav-link-desktop:hover::after { width: 100%; }
+    .nav-header {
+      box-shadow: 0 0 0 transparent;
+      border-bottom: 1px solid transparent;
+      transition: box-shadow var(--duration) var(--ease-out), border-color var(--duration) var(--ease-out);
+    }
+    .nav-header.nav-scrolled {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      border-bottom-color: rgba(204, 255, 0, 0.25);
+    }
+    .logo-nav { position: relative; display: inline-block; height: 2.25rem; }
+    .logo-nav img { height: 2.25rem; width: auto; display: block; }
+    @media (min-width: 768px) {
+      .logo-nav { height: 3.25rem; }
+      .logo-nav img { height: 3.25rem; }
+    }
+    .logo-nav .logo-default { transition: opacity var(--duration) var(--ease-out); }
+    .logo-nav .logo-hover { position: absolute; left: 0; top: 0; opacity: 0; transition: opacity var(--duration) var(--ease-out); }
+    .logo-nav:hover .logo-default { opacity: 0; }
+    .logo-nav:hover .logo-hover { opacity: 1; }
+    .logo-nav.logo-footer { height: 3.25rem; }
+    .logo-nav.logo-footer img { height: 3.25rem; }
+    a:focus-visible { outline: 2px solid var(--color-green); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      .logo-nav .logo-default,
+      .logo-nav .logo-hover { transition: none; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white font-sans text-black antialiased flex flex-col">
+
+<header>
+<nav id="navbar" class="nav-header fixed top-0 left-0 right-0 z-50 transition-all duration-200 text-[#f1f0ed]" style="background-color: var(--color-black);">
+  <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6">
+    <div class="flex items-center justify-between h-16 md:h-20 lg:grid lg:grid-cols-3">
+      <a href="index.html#home" class="logo-nav flex items-center lg:justify-self-start shrink-0" aria-label="TurtleShells - home">
+        <img src="assets/LOGO_BRANCO.svg" alt="TurtleShells cybersecurity logo" class="logo-default w-auto shrink-0" width="170" height="52" />
+        <img src="assets/LOGO_VERDE.svg" alt="TurtleShells cybersecurity logo" class="logo-hover w-auto shrink-0" width="170" height="52" />
+      </a>
+      <div class="hidden lg:flex justify-center items-center gap-8 justify-self-center">
+        <a href="index.html#home" class="nav-link-desktop text-[16px] font-medium text-[#f1f0ed] hover:text-[#ccff00] transition-colors duration-300">Home</a>
+        <a href="index.html#services" class="nav-link-desktop text-[16px] font-medium text-[#f1f0ed] hover:text-[#ccff00] transition-colors duration-300">Services</a>
+        <a href="index.html#cases" class="nav-link-desktop text-[16px] font-medium text-[#f1f0ed] hover:text-[#ccff00] transition-colors duration-300">Cases</a>
+        <a href="index.html#process" class="nav-link-desktop text-[16px] font-medium text-[#f1f0ed] hover:text-[#ccff00] transition-colors duration-300">Process</a>
+      </div>
+      <div class="flex items-center justify-end gap-2 text-[#f1f0ed] justify-self-end">
+        <a href="index.html#home" class="inline-block rounded-[12px] px-6 py-2.5 border-2 border-[#ccff00] bg-[#ccff00] text-[#0c1909] hover:bg-transparent hover:text-[#ccff00] transition-all duration-[350ms] ease-out font-semibold text-[15px] shadow-[4px_4px_0_0_#ccff00] hover:shadow-[2px_2px_0_0_#ccff00] hover:translate-x-[2px] hover:translate-y-[2px]">Go Home</a>
+      </div>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="flex-1 flex items-center justify-center pt-24 md:pt-32">
+  <div class="text-center px-4 py-16">
+    <h1 class="text-[80px] md:text-[120px] font-bold text-black leading-none tracking-[-0.04em]">404</h1>
+    <h2 class="text-[24px] md:text-[32px] font-medium text-black mt-4 tracking-[-0.01em]">Page Not Found</h2>
+    <p class="text-black/70 text-[16px] md:text-[18px] leading-[1.6] mt-4 max-w-md mx-auto">The page you are looking for does not exist or has been moved. Let us help you find what you need.</p>
+    <div class="flex flex-wrap justify-center gap-4 mt-8">
+      <a href="index.html#home" class="inline-block rounded-[12px] px-6 py-3 border-2 border-black bg-[#ccff00] text-black hover:bg-black hover:text-[#ccff00] transition-all duration-[350ms] ease-out font-semibold text-[15px] shadow-[4px_4px_0_0_#000] hover:shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px]">Back to Home</a>
+      <a href="index.html#services" class="inline-block rounded-[12px] px-6 py-3 border-2 border-black bg-white text-black hover:bg-black hover:text-[#ccff00] transition-all duration-[350ms] ease-out font-semibold text-[15px] shadow-[4px_4px_0_0_#000] hover:shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px]">View Services</a>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-black text-white">
+  <div class="w-full max-w-page mx-auto px-4 sm:px-5 lg:px-6 py-10 md:py-12">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+      <a href="index.html#home" class="logo-nav logo-footer flex items-center shrink-0" aria-label="TurtleShells - home">
+        <img src="assets/LOGO_BRANCO.svg" alt="TurtleShells logo" class="logo-default w-auto shrink-0" width="170" height="52" />
+        <img src="assets/LOGO_VERDE.svg" alt="TurtleShells logo" class="logo-hover w-auto shrink-0" width="170" height="52" />
+      </a>
+      <p class="text-white/60 text-[13px] md:text-[14px]">
+        &copy; <script>document.write(new Date().getFullYear())</script> TurtleShells. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var navbar = document.getElementById('navbar');
+  function onScroll() {
+    if (!navbar) return;
+    if (window.scrollY > 20) navbar.classList.add('nav-scrolled');
+    else navbar.classList.remove('nav-scrolled');
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+})();
+</script>
+</body>
+</html>
